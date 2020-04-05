@@ -34,5 +34,3 @@ def preprocess():
         filtered_images.append(img)
         count += 1
     return np.array(filtered_images)
-
-preprocess()
