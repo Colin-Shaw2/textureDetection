@@ -26,7 +26,7 @@ def preprocess():
             img = cv2.resize(img, (512, 512))
             img = np.array(cv2.Canny(img, lower, upper))
             img = np.divide(img, 255)
-            img.flatten()
+            img = img.flatten()
             filtered_images.append(img)
             count += 1
             target.append(classifier)
