@@ -9,12 +9,15 @@ def preprocess():
     limit = 5
     count = 0
     classifier_count = 0
+    classifier_total = 0
     # For each folder
+    for img_type in glob.glob('./dtd/images/*/'):
+        classifier_total += 1
     for img_type in glob.glob('./dtd/images/*/'):
         print(img_type)
         if(count == limit):
             break
-        classifier = np.zeros(47)
+        classifier = np.zeros(classifier_total)
         classifier[classifier_count] = 1
         # For each image
         for imgfile in glob.glob(img_type + "*"):
