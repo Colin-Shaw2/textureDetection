@@ -7,7 +7,6 @@ def preprocess():
     target = []
     filtered_images = []
     limit = 5
-    count = 0
     classifier_count = 0
     classifier_total = 0
     # For each folder
@@ -15,12 +14,13 @@ def preprocess():
         classifier_total += 1
     for img_type in glob.glob('./dtd/images/*/'):
         print(img_type)
-        if(count == limit):
-            break
+        count = 0
         classifier = np.zeros(classifier_total)
         classifier[classifier_count] = 1
         # For each image
         for imgfile in glob.glob(img_type + "*"):
+            if(count == limit):
+                break
             img = np.array(cv2.imread(imgfile, cv2.IMREAD_GRAYSCALE))
             v = np.median(img)
             # apply automatic Canny edge detection using the computed median
