@@ -38,15 +38,19 @@ classifications are shown below in order to give an idea of what
 kinds of images are being used for the creation of the neural
 network.
 
+![figure 1](https://github.com/Colin-Shaw2/textureDetection/blob/master/figures/figure%201.png)
 ```
 Figure 1: A selection from the “Bumpy” classifier in the DTD
 ```
+
+![figure 2](https://github.com/Colin-Shaw2/textureDetection/blob/master/figures/figure%202.png)
 ```
 Figure 2 : Second selection from the “Bumpy” classifier to
 properly demonstrate the range of a single classifier
 ```
 
-**Figure 3 : Selection from the “Marbled” classifier**
+![figure 3](https://github.com/Colin-Shaw2/textureDetection/blob/master/figures/figure%203.png)
+```Figure 3 : Selection from the “Marbled” classifier```
 
 ## 2 Pre-processing
 
@@ -90,8 +94,6 @@ choice of feature is critical when it comes to classification. If the
 selected feature does not accurately reflect the properties of the
 image that are being classified, then the final neural network will
 have poor results. For example, if a histogram of intensities was
-
-```
 chosen to represent the texture of an image the neural network
 would not function as desired as the intensity of the pixels has
 nothing to do with the texture that the image represents. The key is
@@ -101,8 +103,7 @@ to issues as demonstrated in the above images from the “Bumpy”
 classification. The images within a specific classifier are of such a
 wide range that submitting the entire image to the neural network
 would lead to a much lower accuracy than intended.
-```
-```
+
 The feature that was chosen for this project was the edges in the
 image. The selection of edge detection for the feature was due to
 the fact textures in a 2D environment are based upon the edges that
@@ -115,8 +116,7 @@ would be accurate for our purposes. The actual edge detection of
 the image was made quite simple due to the OpenCV Canny Edge
 Detector. By utilizing this built in method, it was quite simple to
 start pulling the edges from the images in the DTD.
-```
-```
+
 That isn’t to say that there weren’t issues with the process. The
 biggest of these was determining the hysteresis threshold to use for
 each image. Since not all of the images had well defined edges (as
@@ -148,7 +148,7 @@ the various classifiers in the DTD and was determined to be quite
 accurate at pin-pointing the edges across the majority. Using this
 hysteresis threshold for the Canny Edge Detector finally allowed
 for the proper extraction of the edges for classification.
-```
+
 
 ## 3 TensorFlow Neural Network
 
@@ -159,7 +159,8 @@ while randomly applying rotations and flips to make the
 training data more robust as well as changing the pixel data
 range from 0-255 to 0-1.
 
-**Figure 4: Summary of the Network**
+![figure 4](https://github.com/Colin-Shaw2/textureDetection/blob/master/figures/figure%204.png)
+```Figure 4: Summary of the Network```
 
 For the network there was a convolution layer with input shape
 (512,512,1) with a (5,5) kernel, a rectify linear activation function
@@ -187,13 +188,11 @@ for the index representing the correct texture which had a value of
 80% of our data was training data and 20% was for validation. It
 was found that training for about 20 epoch would yield the highest
 validation accuracy. After about 20 epochs overfitting began to
-
-```
 occur. The highest validation accuracy that was achieved was 79%
-```
-```
-Figure 5: Model training over 50 epochs, Epoch 23 has the
-highest validation accuracy
+
+![figure 5](https://github.com/Colin-Shaw2/textureDetection/blob/master/figures/figure%205.png)
+```Figure 5: Model training over 50 epochs, Epoch 23 has the
+highest validation accuracy```
 ```
 ## 3 .1 Methods used to increase accuracy
 
@@ -209,21 +208,25 @@ experiment was done by using a simply neural network with no
 convolution layers and it was found that the model could never get
 training accuracy over 50%.
 ```
+![figure 6](https://github.com/Colin-Shaw2/textureDetection/blob/master/figures/figure%206.png)
 ```
 Figure 6: Dense only neural network
 ```
 
-**Figure 7: Dense only neural network Accuracy [y axis only goes
-up to 60%]**
+![figure 7](https://github.com/Colin-Shaw2/textureDetection/blob/master/figures/figure%207.png)
+```Figure 7: Dense only neural network Accuracy [y axis only goes
+up to 60%]```
 
 It was then moved to using networks with convolution layers and
 max pooling. This greatly increased the accuracy but lead to
 overfitting where the accuracy would hit 95% while the validation
 accuracy was only 45%.
 
+![figure 8](https://github.com/Colin-Shaw2/textureDetection/blob/master/figures/figure%208.png)
 **Figure 8: Over fitting of a convolution model, Accuracy is 99%
 while validation accuracy is around 50%**
 
+![figure 9](https://github.com/Colin-Shaw2/textureDetection/blob/master/figures/figure%209.png)
 **Figure 9: Comparison of the model using robust (left) and non-
 robust(right training images)**
 
