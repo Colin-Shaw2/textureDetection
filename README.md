@@ -50,7 +50,10 @@ properly demonstrate the range of a single classifier
 ```
 
 ![figure 3](https://github.com/Colin-Shaw2/textureDetection/blob/master/figures/figure%203.png)
-```Figure 3 : Selection from the “Marbled” classifier```
+
+```
+Figure 3 : Selection from the “Marbled” classifier
+```
 
 ## 2 Pre-processing
 
@@ -160,7 +163,9 @@ training data more robust as well as changing the pixel data
 range from 0-255 to 0-1.
 
 ![figure 4](https://github.com/Colin-Shaw2/textureDetection/blob/master/figures/figure%204.png)
-```Figure 4: Summary of the Network```
+```
+Figure 4: Summary of the Network
+```
 
 For the network there was a convolution layer with input shape
 (512,512,1) with a (5,5) kernel, a rectify linear activation function
@@ -182,8 +187,7 @@ function was chosen since the targets were hot-one encoded,
 meaning every target was tensor with a size equal to the number of
 textures that the network was training for and filled with 0s except
 for the index representing the correct texture which had a value of
-
-1. i e:[0, 1, 0]
+1. ie:[0, 1, 0]
 
 80% of our data was training data and 20% was for validation. It
 was found that training for about 20 epoch would yield the highest
@@ -191,31 +195,30 @@ validation accuracy. After about 20 epochs overfitting began to
 occur. The highest validation accuracy that was achieved was 79%
 
 ![figure 5](https://github.com/Colin-Shaw2/textureDetection/blob/master/figures/figure%205.png)
-```Figure 5: Model training over 50 epochs, Epoch 23 has the
-highest validation accuracy```
+```
+Figure 5: Model training over 50 epochs, Epoch 23 has the
+highest validation accuracy
 ```
 ## 3 .1 Methods used to increase accuracy
 
-```
 The above neural network was the final product of experimentation
 using multiple different networks and preprocessing techniques.
 The above model was the method that yielded the highest validation
-accuracy.
-```
-```
-All models that were experimented on were Sequential. The
+accuracy.  All models that were experimented on were Sequential. The
 experiment was done by using a simply neural network with no
 convolution layers and it was found that the model could never get
 training accuracy over 50%.
-```
+
 ![figure 6](https://github.com/Colin-Shaw2/textureDetection/blob/master/figures/figure%206.png)
 ```
 Figure 6: Dense only neural network
 ```
 
 ![figure 7](https://github.com/Colin-Shaw2/textureDetection/blob/master/figures/figure%207.png)
-```Figure 7: Dense only neural network Accuracy [y axis only goes
-up to 60%]```
+```
+Figure 7: Dense only neural network Accuracy [y axis only goes
+up to 60%]
+```
 
 It was then moved to using networks with convolution layers and
 max pooling. This greatly increased the accuracy but lead to
@@ -223,18 +226,21 @@ overfitting where the accuracy would hit 95% while the validation
 accuracy was only 45%.
 
 ![figure 8](https://github.com/Colin-Shaw2/textureDetection/blob/master/figures/figure%208.png)
-**Figure 8: Over fitting of a convolution model, Accuracy is 99%
-while validation accuracy is around 50%**
+```
+Figure 8: Over fitting of a convolution model, Accuracy is 99%
+while validation accuracy is around 50%
+```
 
 ![figure 9](https://github.com/Colin-Shaw2/textureDetection/blob/master/figures/figure%209.png)
-**Figure 9: Comparison of the model using robust (left) and non-
-robust(right training images)**
+```
+Figure 9: Comparison of the model using robust (left) and non-
+robust(right training images)
+```
 
 The kernel size of the convolution layers was varied but it was
 found that the accuracy would always be 33% (exactly random
 chance) when the kernel size was increased above 5.
 
-```
 To fix this issue training and validation data was augmented by
 using the image generator class. This class would randomly apply
 rotations, flips and zoom to images as they were loaded in to make
@@ -243,10 +249,8 @@ the robust images for training the model trained “slower” (loss
 decreased by less each epoch) but validation and training accuracy
 stayed much more similar, showing that overfitting had been
 greatly reduced.
-```
 ## 3 .2 Limitations due to hardware
 
-```
 While running this on the available laptops there were some serious
 issues involving memory use and computation time. When training
 the models Python would simply say Killed and end the process
@@ -254,17 +258,15 @@ with no other error message. This error was either due to a time out
 or lack of RAM. Sometimes when training also the RAM on the
 laptops would become full and the program would read off the disk
 essential becoming so slow that the program had to be killed.
-```
-```
+
 To deal with this problem three classes of the data were used
 (banded, dotted and zigzagged) instead of all 47, although the code
 should be extendable to handle all the classes. The code was also
 moved to Google Colab which solved the issues of running out of
 RAM and randomly crashing.
-```
+
 ## 4 Applications
 
-```
 The classification of textures is quite a useful tool. It is especially
 useful in the fields of material recognition. The descriptors that
 are given to a specific texture can be related to specific material as
@@ -288,8 +290,7 @@ describe or classify a complicated scene with many different
 elements in it. The real-world is not made up of single texture
 scenes, every scene contains a multitude of materials, each with
 their own textures.
-```
-```
+
 In fields such as aerial image processing, and just general image
 classification, each image is made up of potentially dozens of
 different textures. With a neural network like the one created for
@@ -297,8 +298,6 @@ this project, the various textures can be classified using the
 descriptors and the set of descriptors for an image can be used as a
 feature for further classification. For example, if one attempted to
 classify which room of the house an image was taken in, a neural
-```
-
 network like this project’s could be quite helpful. Each room in a
 house is comprised of its own set of textures. Bathrooms tend to
 have very smooth textures, kitchens tend to have marbled and
@@ -356,13 +355,11 @@ accurate for the textures it finds. This technology has applications
 in things such as material detection and real-world areas such as
 autonomous vehicles, aerial image processing, as well as just
 general image classification. Texture description is a critical field
-
-```
 of computer vision and neural networks that can describe the
 textures that make up an image in a way that is understandable, not
 only to computers but to humans as well, are vital to the continued
 research and application of many different fields.
-```
+
 
 ## REFERENCES
 
